@@ -8,7 +8,7 @@ Mikroservisler şu şekildedir:
 3. financial-transaction-analysis-web -> Admin kullanımı için mikroservisi. Gelen analiz isteklerini veri deposumdan çekip görüntüler.
 
 ## Akış Diagramı
-![Case5_Financial_Analysis_FlowDiagram.jpg](..%2F..%2FDocuments%2FSolvia%2FCase5_Financial_Analysis_FlowDiagram.jpg)
+![Case5_Financial_Analysis_FlowDiagram.jpg](docs/Case5_Financial_Analysis_FlowDiagram.jpg)
 
 ### financial-transaction
 Proje Detayları:
