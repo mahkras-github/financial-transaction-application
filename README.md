@@ -7,6 +7,9 @@ Mikroservisler şu şekildedir:
 2. financial-transaction-analysis -> Kafka consumer mikroservis. Gelen kayıtları veri deposuna kaydeder. Spark kütüphanesi aracılığıyla işlemler şüpheli veya normal şekilide raporlanır.
 3. financial-transaction-analysis-web -> Admin kullanımı için mikroservisi. Gelen analiz isteklerini veri deposumdan çekip görüntüler.
 
+## Akış Diagramı
+![Case5_Financial_Analysis_FlowDiagram.jpg](..%2F..%2FDocuments%2FSolvia%2FCase5_Financial_Analysis_FlowDiagram.jpg)
+
 ### financial-transaction
 Proje Detayları:
 
@@ -102,4 +105,25 @@ Arayüzden Admin -> Connections -> (+) butonu ile "http" ve "spark" bağlantı t
 "suspicious_transactions_dag.py" -> bu dag akışı "financial-analysis" mikroservisine, SimpleHttpOperator ile http isteği atar ve SparkSession 'dan kontrol eder.
 
 
+## Projenin Test Edilmesi
+Projeler ayağa kaldırıldıktan sonra aşağıdaki curl komutu ile manuel transaction gönderimi yapılabilir.
 
+`curl --location 'http://localhost:8081/api/transactions' \
+--header 'Content-Type: application/json' \
+--data '{
+"transactionId": "1234567899",
+"fromAccountId": "acc1",
+"toAccountId": "acc2",
+"amount": 10001.00,
+"transactionDate": "2024-07-21T14:20:24.104119",
+"transactionType": "Transfer"
+}'`
+
+Browser 'dan aşağıdaki urle gidilerek "transaction_summary" objeleri görüntülenebilir.
+http://localhost:8080/admin/analytics
+
+Aşağıdaki url 'e giderek h2-console 'dan tabloların içeriğine bakılabilir.
+http://localhost:8080/h2-console/login.jsp?jsessionid=2b902c52cde5e07eec376b83f0f86630
+
+Aşağıdaki url 'e giderek airflow ui 'dan schedule edilen taskların içeriğine bakılabilir. (Dag: "suspicious-financial-transaction")
+http://localhost:8084/home
