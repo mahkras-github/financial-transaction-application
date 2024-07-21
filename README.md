@@ -32,9 +32,9 @@ Proje Detayları:
 ### financial-transaction-analysis-web
 Proje Detayları:
 
-1. Derleyici: Gradle - 8.7, Groovy
+1. Derleyici: Maven
 2. Dil: java - 17
-3. Çerçeve: Spring Boot - 3.5.1
+3. Çerçeve: Spring Boot - 3.3.1
 5. h2database - docker image (thomseno/h2)
 6. Kütüphaneler: projectlombok - 1.18.34
 
